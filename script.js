@@ -16,8 +16,20 @@ async function getWeather() {
       return;
     }
 
+    // 🗓️ Get current date and year
+    const now = new Date();
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const formattedDate = now.toLocaleDateString("en-US", options);
+
+    // 🌦️ Weather display
     const weather = `
       <h2>${data.name}, ${data.sys.country}</h2>
+      <p><strong>📅 ${formattedDate}</strong></p>
       <p>🌡️ Temperature: ${data.main.temp}°C</p>
       <p>💧 Humidity: ${data.main.humidity}%</p>
       <p>🌬️ Wind Speed: ${data.wind.speed} m/s</p>
